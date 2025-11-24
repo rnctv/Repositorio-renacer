@@ -1,0 +1,52 @@
+/* Badges para el carrusel de días en Agenda (esquina superior interna, sin colisiones) */
+
+/* Un poco de espacio arriba para que no se corten visualmente */
+#daysScroll { padding-top: 8px; }
+
+/* Aseguramos anclaje relativo al “día” y permitimos desbordar leve */
+#daysScroll .day,
+#daysScroll .day-item,
+#daysScroll [data-date],
+.day-pill {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+/* Badge base: pequeño y cerca del borde superior */
+.day-badge {
+  position: absolute !important;
+  top: -4px !important;          /* sobresale 4px hacia arriba */
+  min-width: 16px;
+  height: 16px;
+  line-height: 16px;
+  padding: 0 5px;
+  font-size: 10.5px;
+  font-weight: 700;
+  border-radius: 999px;
+  color: #fff;
+  text-align: center;
+  user-select: none;
+  pointer-events: none;
+  box-shadow: 0 1px 2px rgba(0,0,0,.18);
+  z-index: 3;
+  outline: 2px solid #fff;       /* halo blanco para no “comerse” el borde azul del activo */
+}
+
+/* Esquinas internas: no invadir al día vecino */
+.day-badge.left  { left: 2px !important; }   /* ligeramente dentro */
+.day-badge.right { right: 2px !important; }  /* ligeramente dentro */
+
+/* Colores */
+.day-badge.red   { background: #d93025; } /* pendientes */
+.day-badge.green { background: #188038; } /* completadas */
+
+/* Compatibilidad por si el día usa .day-pill */
+.day-pill .day-badge.left  { left: 2px !important; }
+.day-pill .day-badge.right { right: 2px !important; }
+
+/* En pantallas muy angostas, que entren un poco más */
+@media (max-width: 480px) {
+  .day-badge { top: -3px !important; }
+  .day-badge.left  { left: 1px !important; }
+  .day-badge.right { right: 1px !important; }
+}

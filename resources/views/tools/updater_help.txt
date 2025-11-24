@@ -1,0 +1,70 @@
+UPDATER 3.3 PRO — GUÍA PARA CREAR ZIPS (A PRUEBA DE TODO)
+
+Resumen:
+- Este archivo te explica EXACTAMENTE cómo preparar un ZIP para instalar actualizaciones con el Uploader.
+- Si sigues esta guía, el ZIP se instalará sin dolores de cabeza.
+
+1) ¿Qué hace el Uploader?
+   - Descomprime tu ZIP en una carpeta temporal.
+   - Crea un BACKUP de los archivos que va a reemplazar (fuera del proyecto).
+   - Copia cada archivo del ZIP en la misma ruta dentro del proyecto.
+   - Escribe un log y te muestra el resultado en pantalla.
+
+2) Regla de oro (Estructura interna)
+   ✔ Dentro del ZIP, las rutas deben ser iguales a las del proyecto Laravel.
+   Ejemplo CORRECTO (así debe verse al abrir el ZIP):
+     app/Http/Controllers/FinanzasController.php
+     resources/views/finanzas/index.blade.php
+     routes/web.php
+     public/js/finanzas.js
+
+   ✘ Ejemplos INCORRECTOS:
+     mi_zip_v1/app/Http/...        ← carpeta extra envolviendo todo
+     update/finanzas/resources/... ← otra carpeta extra
+     ../app/Http/...               ← rutas relativas que suben carpetas (peligroso)
+
+3) Dónde puedes colocar archivos
+   - Código PHP:         app/, routes/, database/seeders/, config/
+   - Vistas Blade:       resources/views/
+   - Archivos públicos:  public/
+   - Migraciones/seeders/database: database/migrations, database/seeders
+   - NO subas vendor/ ni .env
+
+4) Permisos y nombres
+   - Usa nombres de archivo/carpetas simples (sin espacios extraños).
+   - Al copiar, el servidor necesita permisos de escritura en los directorios destino.
+   - Recomendado: directorios 775, archivos 664. Usuario/grupo del servidor web.
+
+5) Recomendación para nombrar el ZIP
+   - formato: NOMBRE_MODULO-version-fecha.zip
+   - ejemplo: finanzas-1.3.2-2025-11-06.zip
+
+6) Checklist antes de subir
+   [ ] Al abrir el ZIP veo directamente app/, resources/, routes/, etc.
+   [ ] No hay carpeta extra "envolviendo" todo.
+   [ ] No incluyo vendor/ ni .env.
+   [ ] Probé el ZIP local con:  unzip -l mi.zip  (y verifiqué los paths)
+   [ ] Anoté un README interno (opcional) con versión y cambios.
+
+7) Problemas comunes y soluciones
+   - “Directorio no escribible” → cambiar permisos/propietario del proyecto (ver botón "Probar permisos" en la UI).
+   - “Archivo bloqueado/no escribible” → mismo caso, ajustar permisos de archivos existentes.
+   - “Ruta destino inválida” (al subir archivo suelto) → revisa que el campo "Destino" no tenga espacios ni ../
+   - “ZIP sin archivos válidos” → verifica la estructura; quizá subiste una carpeta contenedora por error.
+
+8) Dónde quedan los BACKUPS y LOGS
+   - Fuera del proyecto, en la carpeta definida por UPDATER_BASE (o ../updater_data por defecto).
+   - Backups:   <UPDATER_BASE>/backups
+   - Subidas:   <UPDATER_BASE>/uploads
+   - Logs:      <UPDATER_BASE>/logs/updater.log
+
+9) Seguridad
+   - Este panel exige una clave (key) en la URL o header.
+   - No compartas el link con key a terceros.
+   - El uploader nunca toca vendor/ ni .env por diseño recomendado.
+
+10) ¿Qué te puedo adjuntar para que lo subas por mí?
+   - Un ZIP con estructura correcta (ver punto 2).
+   - Si son pocos archivos: usa “Subir archivo individual” y especifica la ruta destino exacta.
+
+¡Listo! Con esto puedes crear ZIPS 100% compatibles con el Uploader sin sorpresas.

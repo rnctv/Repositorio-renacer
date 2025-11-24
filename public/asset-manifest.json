@@ -1,0 +1,14 @@
+{
+    "js\/kanban.override.js": "577c242e1e",
+    "js\/agenda.js": "bb21ae5c03",
+    "js\/updater-ui.js": "e247da4cca",
+    "js\/updater-pro.js": "fd6ebf31ee",
+    "js\/kanban-badges.js": "2324b53fcb",
+    "js\/clientes.js": "ba1b251a82",
+    "js\/tecnico.js": "0e91aaf19e",
+    "js\/kanban.openSend.polyfill.js": "2e9f3b9d6c",
+    "js\/kanban.js": "e3869533be_1763779942",
+    "css\/kanban-badges.css": "c959328af7",
+    "css\/updater-pro.css": "98a9f0ca47",
+    "css\/updater.css": "618f61f650"
+}

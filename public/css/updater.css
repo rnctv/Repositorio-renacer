@@ -1,0 +1,27 @@
+:root{
+  --up-bg:#0f172a;
+  --up-accent:#22c55e;
+  --up-soft:#f8fafc;
+}
+.updater .logo-pill{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:32px;height:32px;border-radius:999px;background:var(--up-bg);color:#fff;
+  font-weight:700;font-size:14px;letter-spacing:0.5px;
+}
+.updater .version{color:var(--up-accent)}
+.updater .brand{opacity:.85}
+.card.soft{background:var(--up-soft)}
+.badge.bg-primary-soft{background:#e9f5ff}
+.badge.bg-danger-soft{background:#ffe9e9}
+.codeblock{background:#0b1020;color:#c7e1ff;border-radius:.5rem;font-size:.85rem}
+.pointer{cursor:pointer}
+.mono code,.mono{font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+.mini-card{border:1px solid #e5e7eb;border-radius:.5rem;padding:.75rem}
+.mini-card.error{border-color:#fecaca;background:#fff5f5}
+/* Dropzone */
+.dropzone{border:2px dashed #cbd5e1;border-radius:.75rem;padding:1.25rem;background:#f8fafc}
+.dropzone.drag{background:#eafaf0;border-color:#86efac}
+.dz-icon{font-size:28px}
+.dz-title{font-weight:600}
+.dz-sub .link{cursor:pointer;text-decoration:underline}
+.backup-list .list-group-item{font-size:.95rem}

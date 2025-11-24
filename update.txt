@@ -1,0 +1,1 @@
+Mejoras visuales en Finanzas (formulario, tabla últimos movimientos, distribución de gastos con scroll, y barras de sueldos).
